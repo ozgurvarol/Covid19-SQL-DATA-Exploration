@@ -112,7 +112,7 @@ Select location, SUM(cast(new_deaths as int)) as TotalDeathCount
 From CovidDeaths
 --Where location like '%states%'
 Where continent is null 
-and location not in ('World', 'European Union', 'International')
+and location not in ('World', 'European Union', 'International','High Income', 'Upper middle income', 'Lower middle income', 'Low income')
 Group by location
 order by TotalDeathCount desc
 
@@ -151,7 +151,7 @@ With PopvsVac (Continent, Location, Date, Population, New_Vaccinations, RollingP
 as
 (
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
-, SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date) as RollingPeopleVaccinated
+, SUM(CONVERT(bigint,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date) as RollingPeopleVaccinated
 --, (RollingPeopleVaccinated/population)*100
 From CovidDeaths dea
 Join CovidVaccinate vac
