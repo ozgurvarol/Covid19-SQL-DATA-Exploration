@@ -27,7 +27,7 @@ order by 1,2
 
 -- 2. 
 
--- We take these out as they are not inluded in the above queries and want to stay consistent
+-- I take these out as they are not inluded in the above queries and want to stay consistent
 -- European Union is part of Europe
 
 Select location, SUM(cast(new_deaths as int)) as TotalDeathCount
@@ -58,20 +58,6 @@ Group by Location, Population, date
 order by PercentPopulationInfected desc
 
 
-
-
-
-
-
-
-
-
-
-
--- Queries I originally had, but excluded some because it created too long of video
--- Here only in case you want to check them out
-
-
 -- 1.
 
 Select dea.continent, dea.location, dea.date, dea.population
@@ -99,7 +85,6 @@ order by 1,2
 
 -- Just a double check based off the data provided
 -- numbers are extremely close so we will keep them - The Second includes "International"  Location
-
 
 
 
